@@ -4,67 +4,128 @@ import ProjectCard from '../components/ProjectCard.astro';
 
 // 从 JSON 文件读取项目数据
 const { profile, projects } = await Astro.glob('../../public/projects.json').then(res => res[0]);
+
+// 项目分组逻辑
+const categories = {
+  "核心与个人": ["Blog", "Personal", "Index"],
+  "AI 工具与服务": ["AI", "LLM", "Platform", "Audio"],
+  "影音媒体工具": ["Media", "TV", "Live", "Video", "Social"],
+  "效率与开发者工具": ["Tool", "Image", "Storage", "Privacy", "Email", "Network", "IP", "Monitor", "Status", "Automation", "Workflow", "API", "Parser"],
+  "通用服务与趣味项目": ["Service", "Fun", "Life", "EDU"],
+};
+
+const groupedProjects = {};
+
+// 初始化分组
+Object.keys(categories).forEach(cat => groupedProjects[cat] = []);
+const uncategorized = [];
+
+// 将项目分配到分组
+projects.forEach(project => {
+  let categorized = false;
+  for (const categoryName in categories) {
+    if (project.tags.some(tag => categories[categoryName].includes(tag))) {
+      groupedProjects[categoryName].push(project);
+      categorized = true;
+      break; 
+    }
+  }
+  if (!categorized) {
+    uncategorized.push(project);
+  }
+});
+
+// 如果有未分类的项目，则将其添加到 "通用服务与趣味项目" 组
+if (uncategorized.length > 0) {
+  groupedProjects["通用服务与趣味项目"].push(...uncategorized);
+}
 ---
 
-<Layout title="Torin的小工具">
+<Layout title="Torin's Projects">
 	<!-- 个人信息头部 -->
 	<header class="profile-header">
 		<img 
-			src={profile.Torin} 
+			src={profile.avatar} 
 			alt="个人头像"
-			onerror="this.onerror=null;this.src='https://placehold.co/128x128/0a192f/64ffda?text=Torin';"
+			onerror="this.onerror=null;this.src='https://placehold.co/128x128/ffffff/212529?text=Torin';"
 		/>
 		<h1>{profile.name}</h1>
 		<p>{profile.bio}</p>
 	</header>
 
-	<!-- 项目网格 -->
-	<section class="project-grid">
-		{projects.map((project, index) => (
-			<ProjectCard
-				title={project.title}
-				description={project.description}
-				tags={project.tags}
-				liveUrl={project.liveUrl}
-				repoUrl={project.repoUrl}
-				animationDelay={index * 100}
-			/>
-		))}
-	</section>
+	<!-- 分类项目网格 -->
+	{Object.entries(groupedProjects).map(([categoryName, projectsInCategory]) => (
+		projectsInCategory.length > 0 && (
+			<section class="category-section">
+				<h2 class="category-title">{categoryName}</h2>
+				<div class="project-grid">
+					{projectsInCategory.map((project, index) => (
+						<ProjectCard
+							title={project.title}
+							description={project.description}
+							tags={project.tags}
+							liveUrl={project.liveUrl}
+							repoUrl={project.repoUrl}
+							animationDelay={index * 50}
+						/>
+					))}
+				</div>
+			</section>
+		)
+	))}
 </Layout>
 
 <style>
 	.profile-header {
 		text-align: center;
-		margin-bottom: 80px;
+		margin-bottom: 4rem;
 	}
 
 	.profile-header img {
-		width: 120px;
-		height: 120px;
+		width: 100px;
+		height: 100px;
 		border-radius: 50%;
-		border: 2px solid var(--accent-green);
-		margin-bottom: 20px;
+		border: 2px solid var(--border-color);
+		margin-bottom: 1.5rem;
 		padding: 4px;
-		background-color: var(--bg-light-navy);
+		background-color: var(--bg-card);
+		box-shadow: 0 4px 15px var(--shadow-color);
 	}
 
 	.profile-header h1 {
-		font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
-		margin-bottom: 10px;
-		color: var(--accent-green);
+		font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
+		margin-bottom: 0.75rem;
+		color: var(--text-primary);
 	}
 
 	.profile-header p {
 		font-size: 1.1rem;
 		max-width: 600px;
 		margin: 0 auto;
-		color: var(--text-lightest-slate);
+		color: var(--text-secondary);
+	}
+	
+	.category-section {
+		margin-bottom: 3.5rem;
+	}
+	
+	.category-title {
+		font-size: 1.5rem;
+		color: var(--text-primary);
+		margin-bottom: 1.5rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid var(--border-color);
 	}
 
 	.project-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 20px;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 1.5rem;
+	}
+
+	@media (max-width: 480px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

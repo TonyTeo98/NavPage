@@ -11,51 +11,45 @@ export interface Props {
 const { title, description, tags, liveUrl, repoUrl, animationDelay } = Astro.props;
 ---
 
-<div class="card" style={`animation-delay: ${animationDelay}ms;`}>
-	<div class="card-content">
+<a href={liveUrl ?? repoUrl ?? '#'} target="_blank" rel="noopener noreferrer" class="card-link">
+	<div class="card" style={`animation-delay: ${animationDelay}ms;`}>
 		<header class="card-header">
-			<div class="folder-icon">
-				<i class="fa-regular fa-folder"></i>
-			</div>
-			<div class="links">
-				{repoUrl && repoUrl !== "#" && (
-					<a href={repoUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
-						<i class="fa-brands fa-github"></i>
-					</a>
-				)}
-				{liveUrl && liveUrl !== "#" && (
-					<a href={liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-						<i class="fa-solid fa-arrow-up-right-from-square"></i>
-					</a>
-				)}
-			</div>
+			<i class="icon fa-solid fa-layer-group"></i>
+			<span class="title">{title}</span>
 		</header>
-		<h3 class="card-title">{title}</h3>
-		<p class="card-description">{description}</p>
+		<p class="description">{description}</p>
+		<footer class="card-footer">
+			<ul class="tags-list">
+				{tags.slice(0, 3).map(tag => <li>{tag}</li>)}
+			</ul>
+		</footer>
 	</div>
-	<footer class="card-footer">
-		<ul class="tags-list">
-			{tags.map(tag => <li>{tag}</li>)}
-		</ul>
-	</footer>
-</div>
+</a>
 
 <style>
+	.card-link {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+		height: 100%;
+	}
+
 	.card {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		background-color: var(--bg-light-navy);
-		padding: 2rem;
+		background-color: var(--bg-card);
+		padding: 1.5rem;
 		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+		box-shadow: 0 4px 6px var(--shadow-color);
 		transition: var(--transition-speed);
-		box-shadow: 0 10px 30px -15px var(--shadow-navy);
 		height: 100%;
-
+		
 		/* Animation */
 		opacity: 0;
-		transform: translateY(20px);
-		animation: fadeIn 0.5s ease-out forwards;
+		transform: translateY(10px);
+		animation: fadeIn 0.4s ease-out forwards;
 	}
 
 	@keyframes fadeIn {
@@ -65,64 +59,53 @@ const { title, description, tags, liveUrl, repoUrl, animationDelay } = Astro.pro
 		}
 	}
 
-	.card:hover {
-		transform: translateY(-7px);
-		box-shadow: 0 20px 30px -15px var(--shadow-navy);
+	.card-link:hover .card {
+		transform: translateY(-5px);
+		box-shadow: 0 7px 15px rgba(0, 0, 0, 0.08);
+		border-color: var(--accent-color);
 	}
 	
-	.card-content {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-	}
-
 	.card-header {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 25px;
+		gap: 0.75rem;
+		margin-bottom: 1rem;
 	}
 
-	.folder-icon i {
-		color: var(--accent-green);
-		font-size: 2.5rem; /* 40px */
+	.icon {
+		color: var(--accent-color);
+		font-size: 1.25rem;
 	}
 
-	.links a {
-		color: var(--text-light-slate);
-		padding: 5px;
-		margin-left: 10px;
-		font-size: 1.25rem; /* 20px */
+	.title {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--text-primary);
 	}
 
-	.links a:hover {
-		color: var(--accent-green);
-	}
-
-	.card-title {
-		font-size: 1.3rem;
-		margin-bottom: 10px;
-	}
-	.card-title:hover {
-		color: var(--accent-green);
-	}
-
-	.card-description {
-		font-size: 1rem;
+	.description {
+		font-size: 0.95rem;
+		color: var(--text-secondary);
 		flex-grow: 1;
+		line-height: 1.5;
 	}
 	
 	.card-footer {
-		margin-top: 20px;
+		margin-top: 1.25rem;
 	}
 	
 	.tags-list {
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
-		gap: 10px;
-		font-family: var(--font-mono);
-		font-size: 0.8rem;
-		color: var(--text-light-slate);
+		gap: 0.5rem;
+	}
+
+	.tags-list li {
+		font-size: 0.75rem;
+		color: var(--accent-color);
+		background-color: #eafaf1;
+		padding: 0.25rem 0.75rem;
+		border-radius: 999px;
 	}
 </style>
