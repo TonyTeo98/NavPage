@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+// 读取项目数据！
+const data = await Astro.glob('../../public/projects.json');
+const { profile, projects } = data[0];
+---
+
+<Layout title="我的项目启动台">
+	<header>
+		<img src={profile.avatar} alt="Avatar">
+        <div>
+            <h1>{profile.name}</h1>
+            <p>{profile.bio}</p>
+        </div>
+	</header>
+
+	<div class="project-grid">
+		{projects.map((project, index) => (
+            <div style={`animation-delay: ${index * 100}ms`}>
+                <ProjectCard {...project} />
+            </div>
+        ))}
+	</div>
+</Layout>
