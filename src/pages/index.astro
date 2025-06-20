@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 // 从 JSON 文件读取项目数据
 const { profile, projects } = await Astro.glob('../../public/projects.json').then(res => res[0]);
 
-// 项目分组逻辑
+// 项目分组逻辑 (保持不变)
 const categories = {
   "核心与个人": ["Blog", "Personal", "Index"],
   "AI 工具与服务": ["AI", "LLM", "Platform", "Audio"],
@@ -13,14 +13,9 @@ const categories = {
   "效率与开发者工具": ["Tool", "Image", "Storage", "Privacy", "Email", "Network", "IP", "Monitor", "Status", "Automation", "Workflow", "API", "Parser"],
   "通用服务与趣味项目": ["Service", "Fun", "Life", "EDU"],
 };
-
 const groupedProjects = {};
-
-// 初始化分组
 Object.keys(categories).forEach(cat => groupedProjects[cat] = []);
 const uncategorized = [];
-
-// 将项目分配到分组
 projects.forEach(project => {
   let categorized = false;
   for (const categoryName in categories) {
@@ -34,8 +29,6 @@ projects.forEach(project => {
     uncategorized.push(project);
   }
 });
-
-// 如果有未分类的项目，则将其添加到 "通用服务与趣味项目" 组
 if (uncategorized.length > 0) {
   groupedProjects["通用服务与趣味项目"].push(...uncategorized);
 }
@@ -80,7 +73,6 @@ if (uncategorized.length > 0) {
 		text-align: center;
 		margin-bottom: 4rem;
 	}
-
 	.profile-header img {
 		width: 100px;
 		height: 100px;
@@ -91,41 +83,48 @@ if (uncategorized.length > 0) {
 		background-color: var(--bg-card);
 		box-shadow: 0 4px 15px var(--shadow-color);
 	}
-
 	.profile-header h1 {
-		font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
+		font-size: clamp(1.8rem, 4vw, 2.2rem);
 		margin-bottom: 0.75rem;
 		color: var(--text-primary);
 	}
-
 	.profile-header p {
-		font-size: 1.1rem;
-		max-width: 600px;
+		font-size: 1rem;
+		max-width: 550px;
 		margin: 0 auto;
 		color: var(--text-secondary);
 	}
-	
 	.category-section {
 		margin-bottom: 3.5rem;
 	}
-	
 	.category-title {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		color: var(--text-primary);
 		margin-bottom: 1.5rem;
 		padding-bottom: 0.5rem;
 		border-bottom: 1px solid var(--border-color);
 	}
-
 	.project-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 1.5rem;
+		/* 关键修改：减小最小卡片宽度，允许更多卡片并排 */
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1.25rem; /* 减小卡片间距 */
+	}
+
+	@media (max-width: 768px) {
+		.profile-header {
+			margin-bottom: 3rem;
+		}
+		.category-title {
+			font-size: 1.1rem;
+		}
 	}
 
 	@media (max-width: 480px) {
 		.project-grid {
+			/* 在非常小的屏幕上，强制单列 */
 			grid-template-columns: 1fr;
+			gap: 1rem;
 		}
 	}
 </style>

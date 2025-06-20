@@ -29,24 +29,20 @@ const { title } = Astro.props;
 
 		<!-- Global Styles -->
 		<style>
-			/* CSS Variables for the new Light Theme */
 			:root {
-				--bg-main: #f8f9fa; /* Very light gray background */
-				--bg-card: #ffffff; /* White card background */
-				--text-primary: #212529; /* Dark primary text for high contrast */
-				--text-secondary: #6c757d; /* Lighter secondary text */
-				--accent-color: #28a745; /* A vibrant green for accents */
-				--border-color: #dee2e6; /* Subtle border color */
-				--shadow-color: rgba(0, 0, 0, 0.05); /* Softer shadow */
+				--bg-main: #f8f9fa;
+				--bg-card: #ffffff;
+				--text-primary: #212529;
+				--text-secondary: #6c757d;
+				--accent-color: #28a745;
+				--border-color: #dee2e6;
+				--shadow-color: rgba(0, 0, 0, 0.05);
 				--font-sans: 'Inter', -apple-system, system-ui, sans-serif;
 				--border-radius: 8px;
 				--transition-speed: all 0.2s ease-in-out;
 			}
 
-			/* Reset and Base Styles */
-			*,
-			*::before,
-			*::after {
+			*, *::before, *::after {
 				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
@@ -65,11 +61,12 @@ const { title } = Astro.props;
 			}
 
 			main {
-				max-width: 1100px;
+				width: 90%; /* 使用百分比宽度 */
+				max-width: 1400px; /* 增加最大宽度以利用大屏 */
 				margin: 0 auto;
-				padding: 4rem 2rem;
+				padding: 4rem 1rem; /* 调整内边距 */
 			}
-
+			
 			h1, h2, h3, h4, h5, h6 {
 				font-weight: 600;
 			}
@@ -77,7 +74,8 @@ const { title } = Astro.props;
 			/* Responsive adjustments */
 			@media (max-width: 768px) {
 				main {
-					padding: 2rem 1rem;
+					width: 95%; /* 移动端使用更宽的百分比 */
+					padding: 2rem 0.5rem;
 				}
 			}
 		</style>
