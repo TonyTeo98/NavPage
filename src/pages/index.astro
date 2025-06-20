@@ -1,25 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-// 读取项目数据！
-const data = await Astro.glob('../../public/projects.json');
-const { profile, projects } = data[0];
+
+// 从 JSON 文件读取项目数据
+const { profile, projects } = await Astro.glob('../../public/projects.json').then(res => res[0]);
 ---
 
-<Layout title="我的项目启动台">
-	<header>
-		<img src={profile.avatar} alt="Avatar">
-        <div>
-            <h1>{profile.name}</h1>
-            <p>{profile.bio}</p>
-        </div>
+<Layout title="Torin的小工具">
+	<!-- 个人信息头部 -->
+	<header class="profile-header">
+		<img 
+			src={profile.Torin} 
+			alt="个人头像"
+			onerror="this.onerror=null;this.src='https://placehold.co/128x128/0a192f/64ffda?text=Torin';"
+		/>
+		<h1>{profile.name}</h1>
+		<p>{profile.bio}</p>
 	</header>
 
-	<div class="project-grid">
+	<!-- 项目网格 -->
+	<section class="project-grid">
 		{projects.map((project, index) => (
-            <div style={`animation-delay: ${index * 100}ms`}>
-                <ProjectCard {...project} />
-            </div>
-        ))}
-	</div>
+			<ProjectCard
+				title={project.title}
+				description={project.description}
+				tags={project.tags}
+				liveUrl={project.liveUrl}
+				repoUrl={project.repoUrl}
+				animationDelay={index * 100}
+			/>
+		))}
+	</section>
 </Layout>
+
+<style>
+	.profile-header {
+		text-align: center;
+		margin-bottom: 80px;
+	}
+
+	.profile-header img {
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		border: 2px solid var(--accent-green);
+		margin-bottom: 20px;
+		padding: 4px;
+		background-color: var(--bg-light-navy);
+	}
+
+	.profile-header h1 {
+		font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+		margin-bottom: 10px;
+		color: var(--accent-green);
+	}
+
+	.profile-header p {
+		font-size: 1.1rem;
+		max-width: 600px;
+		margin: 0 auto;
+		color: var(--text-lightest-slate);
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 20px;
+	}
+</style>

@@ -1,30 +1,37 @@
 {
   "profile": {
-    "name": "你的名字",
-    "avatar": "https://avatars.githubusercontent.com/u/YOUR_USER_ID",
-    "bio": "一个热爱创造和分享的开发者。这里是我的小项目基地。"
+    "name": "Torin",
+    "avatar": "https://github.com/TonyTeo98",
+    "bio": "分享我部署的小项目和工具，探索Vibe Coding的无限可能。",
   },
   "projects": [
     {
-      "title": "项目一：智能待办清单",
-      "description": "一个使用 React 和 Firebase 构建的智能待办事项应用。",
-      "tags": ["React", "Firebase", "Web"],
-      "liveUrl": "https://example.com/live-demo-1",
-      "repoUrl": "https://github.com/your-username/project-1"
+      "title": "智能待办清单 (Smart Todo)",
+      "description": "一个使用 React 和 Firebase 构建的智能待办事项应用，支持自然语言识别日期。",
+      "tags": ["React", "Firebase", "Web App"],
+      "liveUrl": "#",
+      "repoUrl": "#"
     },
     {
-      "title": "项目二：像素艺术生成器",
-      "description": "一个可以根据上传图片生成像素风格艺术的 Deno 小工具。",
+      "title": "像素艺术生成器 (Pixelator)",
+      "description": "上传图片即可生成像素风格艺术的 Deno 小工具，使用了 Canvas API 进行图像处理。",
       "tags": ["Deno", "Canvas API", "Tool"],
-      "liveUrl": "https://example.com/live-demo-2",
-      "repoUrl": "https://github.com/your-username/project-2"
+      "liveUrl": "#",
+      "repoUrl": "#"
     },
     {
-      "title": "项目三：个人博客",
-      "description": "基于 Hugo 搭建的静态博客，记录学习和思考。",
-      "tags": ["Hugo", "Markdown", "Blog"],
-      "liveUrl": "https://example.com/live-demo-3",
-      "repoUrl": "https://github.com/your-username/project-3"
+      "title": "个人静态博客 (My Blog)",
+      "description": "基于 Astro 和 Markdown 搭建的静态博客，专注于性能和写作体验。",
+      "tags": ["Astro", "Markdown", "Blog"],
+      "liveUrl": "#",
+      "repoUrl": "#"
+    },
+    {
+      "title": "天气预报应用 (Weather Dash)",
+      "description": "简洁的天气预报仪表盘，通过调用开放天气 API 获取实时数据并进行可视化展示。",
+      "tags": ["JavaScript", "API", "Frontend"],
+      "liveUrl": "#",
+      "repoUrl": "#"
     }
   ]
 }

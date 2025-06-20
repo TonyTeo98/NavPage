@@ -1,94 +1,128 @@
 ---
 export interface Props {
-    title: string;
-    description: string;
-    tags: string[];
-    liveUrl?: string;
-    repoUrl?: string;
+	title: string;
+	description: string;
+	tags: string[];
+	liveUrl?: string;
+	repoUrl?: string;
+	animationDelay: number;
 }
 
-const { title, description, tags, liveUrl, repoUrl } = Astro.props;
+const { title, description, tags, liveUrl, repoUrl, animationDelay } = Astro.props;
 ---
-<div class="card">
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <div class="tags">
-        {tags.map(tag => <span class="tag">{tag}</span>)}
-    </div>
-    <div class="links">
-        {liveUrl && <a href={liveUrl} target="_blank" rel="noopener noreferrer">访问线上</a>}
-        {repoUrl && <a href={repoUrl} target="_blank" rel="noopener noreferrer">查看源码</a>}
-    </div>
+
+<div class="card" style={`animation-delay: ${animationDelay}ms;`}>
+	<div class="card-content">
+		<header class="card-header">
+			<div class="folder-icon">
+				<i class="fa-regular fa-folder"></i>
+			</div>
+			<div class="links">
+				{repoUrl && repoUrl !== "#" && (
+					<a href={repoUrl} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
+						<i class="fa-brands fa-github"></i>
+					</a>
+				)}
+				{liveUrl && liveUrl !== "#" && (
+					<a href={liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
+						<i class="fa-solid fa-arrow-up-right-from-square"></i>
+					</a>
+				)}
+			</div>
+		</header>
+		<h3 class="card-title">{title}</h3>
+		<p class="card-description">{description}</p>
+	</div>
+	<footer class="card-footer">
+		<ul class="tags-list">
+			{tags.map(tag => <li>{tag}</li>)}
+		</ul>
+	</footer>
 </div>
 
 <style>
-.card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    animation: fadeIn 0.5s ease-out forwards;
-    opacity: 0;
-}
+	.card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		background-color: var(--bg-light-navy);
+		padding: 2rem;
+		border-radius: var(--border-radius);
+		transition: var(--transition-speed);
+		box-shadow: 0 10px 30px -15px var(--shadow-navy);
+		height: 100%;
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
+		/* Animation */
+		opacity: 0;
+		transform: translateY(20px);
+		animation: fadeIn 0.5s ease-out forwards;
+	}
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
+	@keyframes fadeIn {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-h3 {
-    margin: 0;
-    color: var(--accent-color);
-    font-size: 1.25rem;
-}
+	.card:hover {
+		transform: translateY(-7px);
+		box-shadow: 0 20px 30px -15px var(--shadow-navy);
+	}
+	
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
 
-p {
-    margin: 0;
-    flex-grow: 1;
-}
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 25px;
+	}
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
+	.folder-icon i {
+		color: var(--accent-green);
+		font-size: 2.5rem; /* 40px */
+	}
 
-.tag {
-    background-color: var(--tag-bg);
-    color: var(--tag-text);
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-}
+	.links a {
+		color: var(--text-light-slate);
+		padding: 5px;
+		margin-left: 10px;
+		font-size: 1.25rem; /* 20px */
+	}
 
-.links {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1rem;
-}
+	.links a:hover {
+		color: var(--accent-green);
+	}
 
-.links a {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-weight: bold;
-    border: 1px solid var(--accent-color);
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
-}
+	.card-title {
+		font-size: 1.3rem;
+		margin-bottom: 10px;
+	}
+	.card-title:hover {
+		color: var(--accent-green);
+	}
 
-.links a:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
+	.card-description {
+		font-size: 1rem;
+		flex-grow: 1;
+	}
+	
+	.card-footer {
+		margin-top: 20px;
+	}
+	
+	.tags-list {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		gap: 10px;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--text-light-slate);
+	}
 </style>
