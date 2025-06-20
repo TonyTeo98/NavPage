@@ -2,35 +2,112 @@
   "profile": {
     "name": "Torin",
     "avatar": "https://placehold.co/128x128/0a192f/64ffda?text=Torin",
-    "bio": "分享我部署的小项目和工具，探索Vibe Coding的无限可能。"
+    "bio": "分享我部署的小项目和工具，探索Vibe Coding的无限可能！"
   },
   "projects": [
     {
-      "title": "智能待办清单 (Smart Todo)",
-      "description": "一个使用 React 和 Firebase 构建的智能待办事项应用，支持自然语言识别日期。",
-      "tags": ["React", "Firebase", "Web App"],
-      "liveUrl": "#",
+      "title": "Torin's Blog（暂未施工）",
+      "description": "记录技术、思考与生活的个人博客，欢迎交流",
+      "tags": ["Blog", "Personal"],
+      "liveUrl": "https://blog.ytz.me",
       "repoUrl": "#"
     },
     {
-      "title": "像素艺术生成器 (Pixelator)",
-      "description": "上传图片即可生成像素风格艺术的 Deno 小工具，使用了 Canvas API 进行图像处理。",
-      "tags": ["Deno", "Canvas API", "Tool"],
-      "liveUrl": "#",
+      "title": "Torin导航页",
+      "description": "所有公开项目的中心导航入口，快速访问我的所有服务",
+      "tags": ["Service", "Index"],
+      "liveUrl": "https://nav.ytz.me",
       "repoUrl": "#"
     },
     {
-      "title": "个人静态博客 (My Blog)",
-      "description": "基于 Astro 和 Markdown 搭建的静态博客，专注于性能和写作体验。",
-      "tags": ["Astro", "Markdown", "Blog"],
-      "liveUrl": "#",
+      "title": "Dify - AI应用开发",
+      "description": "基于LLM的AI应用开发平台，用于快速构建和部署AI应用",
+      "tags": ["AI", "Platform", "LLM"],
+      "liveUrl": "https://dify.ytz.me",
       "repoUrl": "#"
     },
     {
-      "title": "天气预报应用 (Weather Dash)",
-      "description": "简洁的天气预报仪表盘，通过调用开放天气 API 获取实时数据并进行可视化展示。",
-      "tags": ["JavaScript", "API", "Frontend"],
-      "liveUrl": "#",
+      "title": "n8n 工作流自动化",
+      "description": "部署的n8n实例，用于连接不同应用，实现工作流自动化",
+      "tags": ["Automation", "Workflow", "API"],
+      "liveUrl": "https://n8n.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "Open WebUI",
+      "description": "一个用于本地与大语言模型交互的网页用户界面",
+      "tags": ["AI", "Chat", "LLM"],
+      "liveUrl": "https://chatnow.eu.org",
+      "repoUrl": "#"
+    },
+    {
+      "title": "TTS 文本转语音",
+      "description": "提供高质量文本转语音（Text-to-Speech）功能的在线工具",
+      "tags": ["Tool", "AI", "Audio"],
+      "liveUrl": "https://tts.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "LivreTV",
+      "description": "轻量级、免费的在线视频搜索与观看平台，提供来自多个视频源的内容搜索与播放服务",
+      "tags": ["Media", "TV", "Movie"],
+      "liveUrl": "https://tv.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "SyncTV",
+      "description": "与朋友们同步观看视频的平台，享受共同观影的乐趣",
+      "tags": ["Media", "Social", "Video"],
+      "liveUrl": "https://synctv.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "抖音无水印解析",
+      "description": "在线解析并下载无水印的抖音视频",
+      "tags": ["Tool", "Video", "Parser"],
+      "liveUrl": "https://douyin.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "Yuyan图床",
+      "description": "稳定、快速的个人图片托管服务，方便外链分享",
+      "tags": ["Tool", "Image", "Storage"],
+      "liveUrl": "https://imgbed.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "Moe临时邮箱",
+      "description": "保护个人隐私，用于接收临时邮件和注册验证的服务",
+      "tags": ["Tool", "Privacy", "Email"],
+      "liveUrl": "https://mail.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "IP工具箱",
+      "description": "提供IP地址查询、地理位置及相关网络信息的在线工具箱",
+      "tags": ["Tool", "Network", "IP"],
+      "liveUrl": "https://ip.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "哪吒探针",
+      "description": "个人服务器及各项服务的实时状态监控面板",
+      "tags": ["Monitor", "Status"],
+      "liveUrl": "https://status.ytz.me",
+      "repoUrl": "#"
+    },
+    {
+      "title": "EDU邮箱自助申请",
+      "description": "提供教育邮箱（.edu）的自助申请渠道",
+      "tags": ["Service", "EDU"],
+      "liveUrl": "https://apply.oxyz.eu.org",
+      "repoUrl": "#"
+    },
+    {
+      "title": "下班啦",
+      "description": "一个有趣的下班倒计时页面，给工作日增添一点期待",
+      "tags": ["Fun", "Life"],
+      "liveUrl": "https://offwork.ytz.me",
       "repoUrl": "#"
     }
   ]
