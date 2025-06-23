@@ -48,7 +48,7 @@
       "repoUrl": "#"
     },
     {
-      "title": "LivreTV",
+      "title": "LibreTV",
       "description": "轻量级、免费的在线视频搜索与观看平台，提供来自多个视频源的内容搜索与播放服务",
       "tags": ["Media", "TV", "Movie"],
       "liveUrl": "https://tv.ytz.me",
@@ -98,7 +98,7 @@
     },
     {
       "title": "EDU邮箱自助申请",
-      "description": "提供教育邮箱（.edu）的自助申请渠道",
+      "description": "提供教育邮箱（.edu.kg）的自助申请渠道",
       "tags": ["Service", "EDU"],
       "liveUrl": "https://apply.oxyz.eu.org",
       "repoUrl": "#"
