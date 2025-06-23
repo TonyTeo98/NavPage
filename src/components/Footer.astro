@@ -1,0 +1,67 @@
+---
+const today = new Date();
+---
+
+<footer class="site-footer">
+    <div class="social-links">
+        <a href="https://github.com/TonyTeo98" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <!-- 您可以在这里添加更多社交链接 -->
+        <!-- 
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        -->
+    </div>
+    <div class="copyright">
+        &copy; {today.getFullYear()} Torin. All Rights Reserved.
+    </div>
+    <div class="built-with">
+        Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        width: 100%;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: auto; /* Crucial for sticky footer */
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        margin-bottom: 1rem;
+    }
+
+    .social-links a {
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        margin: 0 0.75rem;
+        transition: var(--transition-speed);
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+
+    .copyright {
+        margin-bottom: 0.5rem;
+    }
+    
+    .built-with a {
+        color: var(--text-primary);
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .built-with a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+</style>
