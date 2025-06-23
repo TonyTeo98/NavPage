@@ -21,14 +21,14 @@
     },
     {
       "title": "Dify - AI应用开发",
-      "description": "基于LLM的AI应用开发平台，用于快速构建和部署AI应用",
+      "description": "自部署的基于LLM的AI应用开发平台，用于快速构建和部署AI应用",
       "tags": ["AI", "Platform", "LLM"],
       "liveUrl": "https://dify.ytz.me",
       "repoUrl": "#"
     },
     {
       "title": "n8n 工作流自动化",
-      "description": "部署的n8n实例，用于连接不同应用，实现工作流自动化",
+      "description": "自部署的n8n实例，用于连接不同应用，实现工作流自动化",
       "tags": ["Automation", "Workflow", "API"],
       "liveUrl": "https://n8n.ytz.me",
       "repoUrl": "#"
@@ -42,7 +42,7 @@
     },
     {
       "title": "TTS 文本转语音",
-      "description": "提供高质量文本转语音（Text-to-Speech）功能的在线工具",
+      "description": "提供高质量文本转语音（Text-to-Speech）功能的在线工具，支持自定义微软和Open AI的API",
       "tags": ["Tool", "AI", "Audio"],
       "liveUrl": "https://tts.ytz.me",
       "repoUrl": "#"
@@ -56,14 +56,14 @@
     },
     {
       "title": "SyncTV",
-      "description": "与朋友们同步观看视频的平台，享受共同观影的乐趣",
+      "description": "与朋友们同步观看视频的平台，享受共同观影的乐趣（后续尝试内置VOD视频源）",
       "tags": ["Media", "Social", "Video"],
       "liveUrl": "https://synctv.ytz.me",
       "repoUrl": "#"
     },
     {
-      "title": "抖音无水印解析",
-      "description": "在线解析并下载无水印的抖音视频",
+      "title": "抖音视频图文无水印解析",
+      "description": "在线解析并下载无水印的抖音视频与图文",
       "tags": ["Tool", "Video", "Parser"],
       "liveUrl": "https://douyin.ytz.me",
       "repoUrl": "#"
@@ -91,7 +91,7 @@
     },
     {
       "title": "哪吒探针",
-      "description": "个人服务器及各项服务的实时状态监控面板",
+      "description": "个人服务器的实时状态监控面板",
       "tags": ["Monitor", "Status"],
       "liveUrl": "https://status.ytz.me",
       "repoUrl": "#"
