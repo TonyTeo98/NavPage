@@ -11,45 +11,107 @@ export interface Props {
 const { title, description, tags, liveUrl, repoUrl, animationDelay } = Astro.props;
 ---
 
-<a href={liveUrl ?? repoUrl ?? '#'} target="_blank" rel="noopener noreferrer" class="card-link">
-	<div class="card" style={`animation-delay: ${animationDelay}ms;`}>
+<div class="card" style={`animation-delay: ${animationDelay}ms;`}>
+	<a href={liveUrl ?? repoUrl ?? '#'} target="_blank" rel="noopener noreferrer" class="card-link">
 		<header class="card-header">
 			<i class="icon fa-solid fa-layer-group"></i>
 			<span class="title">{title}</span>
 		</header>
 		<p class="description">{description}</p>
-		<footer class="card-footer">
-			<ul class="tags-list">
-				{tags.slice(0, 3).map(tag => <li>{tag}</li>)}
-			</ul>
-		</footer>
-	</div>
-</a>
+	</a>
+	<footer class="card-footer">
+		<ul class="tags-list">
+			{tags.slice(0, 3).map(tag => <li>{tag}</li>)}
+		</ul>
+	</footer>
+</div>
 
 <style>
-	.card-link {
-		text-decoration: none;
-		color: inherit;
-		display: block;
-		height: 100%;
-	}
-
 	.card {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
 		background-color: var(--bg-card);
-		padding: 1.25rem; /* 减小内边距 */
+		padding: 1rem; /* Further reduced padding for a tighter feel */
 		border-radius: var(--border-radius);
 		border: 1px solid var(--border-color);
-		box-shadow: 0 2px 4px var(--shadow-color); /* 减弱阴影 */
+		box-shadow: 0 1px 3px var(--shadow-color);
 		transition: var(--transition-speed);
-		height: 100%;
 		
-		/* Animation */
+		/* Overlap Fix & Animation */
 		opacity: 0;
 		transform: translateY(10px);
 		animation: fadeIn 0.4s ease-out forwards;
+	}
+
+	.card:hover {
+		/* A more subtle hover effect that doesn't cause overlap */
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px var(--shadow-color);
+		border-color: var(--accent-color);
+	}
+
+	.card-link {
+		text-decoration: none;
+		color: inherit;
+		flex-grow: 1; /* Allows the link to fill available space */
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.icon {
+		color: var(--accent-color);
+		font-size: 1rem;
+	}
+
+	.title {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-primary);
+	}
+	.card-link:hover .title {
+		color: var(--accent-color);
+	}
+
+	.description {
+		/* Critical Height Fix: Truncate text to 2 lines */
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		flex-grow: 1; /* Take up remaining space in the link area */
+		
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		min-height: 42px; /* 0.875rem * 1.5 * 2 lines, ensures consistent height */
+	}
+	
+	.card-footer {
+		margin-top: 0.75rem; /* Reduced margin */
+	}
+	
+	.tags-list {
+		display: flex;
+		flex-wrap: wrap;
+		list-style: none;
+		gap: 0.4rem;
+	}
+
+	.tags-list li {
+		font-size: 0.7rem;
+		/* New Tag Style */
+		color: var(--accent-color);
+		background-color: #e6f2ff; /* Very light blue background */
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
 	}
 
 	@keyframes fadeIn {
@@ -57,55 +119,5 @@ const { title, description, tags, liveUrl, repoUrl, animationDelay } = Astro.pro
 			opacity: 1;
 			transform: translateY(0);
 		}
-	}
-
-	.card-link:hover .card {
-		transform: translateY(-4px); /* 减小悬停位移 */
-		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.07); /* 调整悬停阴影 */
-		border-color: var(--accent-color);
-	}
-	
-	.card-header {
-		display: flex;
-		align-items: center;
-		gap: 0.65rem; /* 减小间距 */
-		margin-bottom: 0.75rem; /* 减小间距 */
-	}
-
-	.icon {
-		color: var(--accent-color);
-		font-size: 1.1rem; /* 减小图标尺寸 */
-	}
-
-	.title {
-		font-size: 1rem; /* 减小标题字体 */
-		font-weight: 600;
-		color: var(--text-primary);
-	}
-
-	.description {
-		font-size: 0.875rem; /* 减小描述字体 */
-		color: var(--text-secondary);
-		flex-grow: 1;
-		line-height: 1.5;
-	}
-	
-	.card-footer {
-		margin-top: 1rem; /* 减小间距 */
-	}
-	
-	.tags-list {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		gap: 0.4rem; /* 减小标签间距 */
-	}
-
-	.tags-list li {
-		font-size: 0.7rem; /* 减小标签字体 */
-		color: var(--accent-color);
-		background-color: #eafaf1;
-		padding: 0.2rem 0.6rem; /* 减小标签内边距 */
-		border-radius: 999px;
 	}
 </style>
