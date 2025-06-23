@@ -9,72 +9,55 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="zh-CN">
 	<head>
-		<!-- Meta Tags -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="Torin 的个人项目导航页" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-
-		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-		
-		<!-- Font Awesome for Icons -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-		<!-- Global Styles -->
 		<style>
 			:root {
-				--bg-main: #f8f9fa;
+				/* New Blue Color Scheme */
+				--bg-main: #f7faff; /* A slightly cooler, very light blue background */
 				--bg-card: #ffffff;
-				--text-primary: #212529;
-				--text-secondary: #6c757d;
-				--accent-color: #28a745;
-				--border-color: #dee2e6;
-				--shadow-color: rgba(0, 0, 0, 0.05);
+				--text-primary: #1e293b; /* Dark Slate Blue for text */
+				--text-secondary: #64748b; /* Lighter Slate for secondary text */
+				--accent-color: #007BFF; /* A vibrant, modern blue */
+				--border-color: #e2e8f0; /* Softer border color */
+				--shadow-color: rgba(100, 116, 139, 0.08); /* A subtle, cool-toned shadow */
 				--font-sans: 'Inter', -apple-system, system-ui, sans-serif;
 				--border-radius: 8px;
 				--transition-speed: all 0.2s ease-in-out;
 			}
-
 			*, *::before, *::after {
 				box-sizing: border-box;
 				margin: 0;
 				padding: 0;
 			}
-
 			html {
 				scroll-behavior: smooth;
 			}
-
 			body {
 				background-color: var(--bg-main);
 				color: var(--text-primary);
 				font-family: var(--font-sans);
-				font-size: 16px;
-				line-height: 1.6;
 			}
-
 			main {
-				width: 90%; /* 使用百分比宽度 */
-				max-width: 1400px; /* 增加最大宽度以利用大屏 */
+				width: 90%;
+				max-width: 1400px;
 				margin: 0 auto;
-				padding: 4rem 1rem; /* 调整内边距 */
+				padding: 4rem 1rem;
 			}
-			
 			h1, h2, h3, h4, h5, h6 {
 				font-weight: 600;
 			}
-			
-			/* Responsive adjustments */
 			@media (max-width: 768px) {
 				main {
-					width: 95%; /* 移动端使用更宽的百分比 */
+					width: 95%;
 					padding: 2rem 0.5rem;
 				}
 			}
