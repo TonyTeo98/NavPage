@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 interface Props {
 	title: string;
 }
@@ -21,14 +23,13 @@ const { title } = Astro.props;
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<style>
 			:root {
-				/* New Blue Color Scheme */
-				--bg-main: #f7faff; /* A slightly cooler, very light blue background */
+				--bg-main: #f7faff;
 				--bg-card: #ffffff;
-				--text-primary: #1e293b; /* Dark Slate Blue for text */
-				--text-secondary: #64748b; /* Lighter Slate for secondary text */
-				--accent-color: #007BFF; /* A vibrant, modern blue */
-				--border-color: #e2e8f0; /* Softer border color */
-				--shadow-color: rgba(100, 116, 139, 0.08); /* A subtle, cool-toned shadow */
+				--text-primary: #1e293b;
+				--text-secondary: #64748b;
+				--accent-color: #007BFF;
+				--border-color: #e2e8f0;
+				--shadow-color: rgba(100, 116, 139, 0.08);
 				--font-sans: 'Inter', -apple-system, system-ui, sans-serif;
 				--border-radius: 8px;
 				--transition-speed: all 0.2s ease-in-out;
@@ -45,12 +46,18 @@ const { title } = Astro.props;
 				background-color: var(--bg-main);
 				color: var(--text-primary);
 				font-family: var(--font-sans);
+				/* Sticky Footer CSS */
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
 			}
 			main {
 				width: 90%;
 				max-width: 1400px;
 				margin: 0 auto;
 				padding: 4rem 1rem;
+				/* Sticky Footer CSS */
+				flex-grow: 1; 
 			}
 			h1, h2, h3, h4, h5, h6 {
 				font-weight: 600;
@@ -67,5 +74,6 @@ const { title } = Astro.props;
 		<main>
 			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>
