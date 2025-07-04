@@ -47,11 +47,18 @@
       "liveUrl": "https://tts.ytz.me",
       "repoUrl": "#"
     },
+        {
+      "title": "MoonTV",
+      "description": "轻量级、免费的在线视频搜索与观看平台，提供来自多个视频源的内容搜索与播放服务",
+      "tags": ["Media", "TV", "Movie"],
+      "liveUrl": "https://tv.ytz.me",
+      "repoUrl": "#"
+    },
     {
       "title": "LibreTV",
       "description": "轻量级、免费的在线视频搜索与观看平台，提供来自多个视频源的内容搜索与播放服务",
       "tags": ["Media", "TV", "Movie"],
-      "liveUrl": "https://tv.ytz.me",
+      "liveUrl": "https://tv2.ytz.me",
       "repoUrl": "#"
     },
     {
